@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grok-o-Tron 3000 IQ Test</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 20px; background: #f0f0f0; }
+        textarea { width: 300px; height: 50px; margin: 5px; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>Grok-o-Tron 3000</h1>
+    <p>Test your AI’s IQ!</p>
+    <div>
+        <label>Pattern (e.g., 1,4,9,16,25,?):</label><br>
+        <textarea id="pattern"></textarea><br>
+        <label>Story (feather,clock,river):</label><br>
+        <textarea id="story"></textarea><br>
+        <!-- Add more inputs later -->
+        <button onclick="calculateScore()">Score It!</button>
+    </div>
+    <h2 id="result"></h2>
+    <script>
+        function calculateScore() {
+            let pattern = document.getElementById('pattern').value;
+            let story = document.getElementById('story').value;
+            let score = 0;
+            if (pattern.trim() === '36') score += 20; // Simple check for now
+            if (story.includes('feather') && story.includes('clock') && story.includes('river')) score += 18; // Basic creativity
+            document.getElementById('result').innerHTML = `Score: ${score}/40 (More tasks coming!)`;
+        }
+    </script>
+</body>
+</html>
