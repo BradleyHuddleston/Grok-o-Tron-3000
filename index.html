@@ -51,25 +51,27 @@
         margin: 20px 0; 
     }
     .task { 
-        background: white; 
-        width: 320px; 
-        padding: 15px; 
-        border-radius: 10px; 
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-        transition: transform 0.2s; 
-        white-space: normal; 
-        word-wrap: break-word; 
-    }
+    background: white; 
+    width: 400px; /* Wider! */
+    padding: 15px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    transition: transform 0.2s; 
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; /* Extra wrap insurance */
     .task:hover { 
         transform: translateY(-5px); 
     }
-    label { 
-        display: block; 
-        font-weight: bold; 
-        color: #004d40; 
-        margin-bottom: 5px; 
-        white-space: normal; 
-        word-wrap: break-word; 
+   label { 
+    display: block; 
+    font-weight: bold; 
+    color: #004d40; 
+    margin-bottom: 5px; 
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+}
     }
     input, textarea { 
         width: 100%; 
