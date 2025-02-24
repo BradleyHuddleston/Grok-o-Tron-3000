@@ -3,96 +3,126 @@
 <head>
     <title>Grok-o-Tron 3000 IQ Test</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f0f0f0; }
-        h1 { color: #2e8b57; }
-        .task { margin: 15px 0; }
-        label { display: block; font-weight: bold; }
-        textarea, input { width: 300px; margin: 5px; padding: 5px; }
-        button { padding: 10px 20px; background: #2e8b57; color: white; border: none; cursor: pointer; }
-        button:hover { background: #3cb371; }
-        #result { margin-top: 20px; font-size: 1.2em; }
+        body { 
+            font-family: 'Roboto', Arial, sans-serif; 
+            text-align: center; 
+            padding: 40px; 
+            background: linear-gradient(to bottom, #e0f7fa, #b0e0e6); 
+        }
+        h1 { 
+            color: #00695c; 
+            font-size: 2.5em; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+        }
+        .intro, .scoring { 
+            max-width: 700px; 
+            margin: 20px auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        .tasks { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            margin: 20px 0; 
+        }
+        .task { 
+            background: white; 
+            width: 320px; 
+            padding: 15px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            transition: transform 0.2s; 
+        }
+        .task:hover { 
+            transform: translateY(-5px); 
+        }
+        label { 
+            display: block; 
+            font-weight: bold; 
+            color: #004d40; 
+            margin-bottom: 5px; 
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 8px; 
+            border: 1px solid #b0bec5; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            font-size: 1em; 
+        }
+        textarea { 
+            height: 80px; 
+            resize: vertical; 
+        }
+        button { 
+            padding: 12px 30px; 
+            background: #00796b; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1.1em; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+        }
+        button:hover { 
+            background: #009688; 
+        }
+        #result { 
+            margin-top: 30px; 
+            font-size: 1.5em; 
+            color: #d81b60; 
+            opacity: 0; 
+            transition: opacity 0.5s; 
+        }
+        #result.show { 
+            opacity: 1; 
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Grok-o-Tron 3000</h1>
     <p>Test your AI’s IQ—built for machines, not humans!</p>
-    <div style="max-width: 600px; margin: 20px auto; text-align: left;">
-    <h3>Why an AI IQ Test?</h3>
-    <p>Human IQ tests lean on stuff like spatial puzzles or vocab — cool for us janky humans, but lame for AIs. The Grok-o-Tron 3000 hits what AIs rock at: lightning-fast logic, vast knowledge, creative twists, and code-smarts. No paper folding here—just pure digital brainpower!</p>
-</div>
-    <div style="max-width: 600px; margin: 20px auto; text-align: left;">
-    <h3>How Scoring Works</h3>
-    <p>Each of the 7 tasks scores up to 20-ish points — exact answers (like ‘36’) get full marks, creative ones (like stories) earn 15–18 based on effort. Total raw score’s around 134, scaled to 100 for a clean IQ vibe. Test your AI and see where it lands!</p>
-</div>
-    <div class="task">
-        <label>1. Pattern Recognition (e.g., 1,4,9,16,25,?):</label>
-        <input type="text" id="pattern">
+
+    <div class="intro">
+        <h3>Why an AI IQ Test?</h3>
+        <p>Human IQ tests lean on stuff like spatial puzzles or vocab—cool for us janky humans, but lame for AIs. The Grok-o-Tron 3000 hits what AIs rock at: lightning-fast logic, vast knowledge, creative twists, and code-smarts. No paper folding here—just pure digital brainpower!</p>
     </div>
-    <div class="task">
-        <label>2. Knowledge Breadth (Longest river?):</label>
-        <input type="text" id="knowledge">
+
+    <div class="scoring">
+        <h3>How Scoring Works</h3>
+        <p>Each of the 7 tasks scores up to 20-ish points—exact answers (like ‘36’) get full marks, creative ones (like stories) earn 15–18 based on effort. Total raw score’s around 134, scaled to 100 for a clean IQ vibe. Test your AI and see where it lands!</p>
     </div>
-    <div class="task">
-        <label>3. Creative Synthesis (Story with feather,clock,river):</label>
-        <textarea id="creative"></textarea>
-    </div>
-    <div class="task">
-        <label>4. Task Efficiency (Sum odds 1-99 / primes < 20):</label>
-        <input type="text" id="efficiency">
-    </div>
-    <div class="task">
-        <label>5. Adaptability (Teach a toaster to sing):</label>
-        <textarea id="adaptability"></textarea>
-    </div>
-    <div class="task">
-        <label>6. Code Efficiency (Optimize: for(i=0;i<n;i++){for(j=0;j<n;j++){sum+=arr[i]*arr[j]}}):</label>
-        <textarea id="code"></textarea>
-    </div>
-    <div class="task">
-        <label>7. Contextual Reasoning (Smell of rain?):</label>
-        <textarea id="context"></textarea>
-    </div>
-    <button onclick="calculateScore()">Score It!</button>
-    <h2 id="result"></h2>
 
-    <script>
-        function calculateScore() {
-            let score = 0;
-
-            // 1. Pattern Recognition
-            let pattern = document.getElementById('pattern').value.trim();
-            if (pattern === '36') score += 20;
-
-            // 2. Knowledge Breadth
-            let knowledge = document.getElementById('knowledge').value.trim().toLowerCase();
-            if (knowledge === 'nile') score += 20;
-
-            // 3. Creative Synthesis
-            let creative = document.getElementById('creative').value.toLowerCase();
-            if (creative.includes('feather') && creative.includes('clock') && creative.includes('river')) {
-                score += (creative.length > 50 ? 18 : 15); // Bonus for length
-            }
-
-            // 4. Task Efficiency
-            let efficiency = document.getElementById('efficiency').value.trim();
-            if (efficiency === '312.5') score += 20;
-
-            // 5. Adaptability
-            let adaptability = document.getElementById('adaptability').value.toLowerCase();
-            if (adaptability.length > 20 && adaptability.includes('toaster')) score += 18;
-
-            // 6. Code Efficiency
-            let code = document.getElementById('code').value.toLowerCase();
-            if (code.includes('o(n)') || code.includes('sum(arr)') || code.includes('s * s')) score += 20;
-
-            // 7. Contextual Reasoning
-            let context = document.getElementById('context').value.toLowerCase();
-            if (context.includes('petrichor') || context.includes('earthy') || context.includes('ozone')) score += 18;
-
-            // Scale to 100 (max raw is 134, so normalize)
-            let finalScore = Math.round((score / 134) * 100);
-            document.getElementById('result').innerHTML = `Score: ${finalScore}/100`;
-        }
-    </script>
-</body>
-</html>
+    <div class="tasks">
+        <div class="task">
+            <label>1. Pattern Recognition (e.g., 1,4,9,16,25,?):</label>
+            <input type="text" id="pattern">
+        </div>
+        <div class="task">
+            <label>2. Knowledge Breadth (Longest river?):</label>
+            <input type="text" id="knowledge">
+        </div>
+        <div class="task">
+            <label>3. Creative Synthesis (Story with feather,clock,river):</label>
+            <textarea id="creative"></textarea>
+        </div>
+        <div class="task">
+            <label>4. Task Efficiency (Sum odds 1-99 / primes < 20):</label>
+            <input type="text" id="efficiency">
+        </div>
+        <div class="task">
+            <label>5. Adaptability (Teach a toaster to sing):</label>
+            <textarea id="adaptability"></textarea>
+        </div>
+        <div class="task">
+            <label>6. Code Efficiency (Optimize: for(i=0;i<n;i++){for(j=0;j<n;j++){sum+=arr[i]*arr[j]}}):</label>
+            <textarea id="code"></textarea>
+        </div>
+        <div class="task">
+            <label>7. Contextual Reasoning (Smell of rain?):</label>
+            <textarea id="context"></textarea>
