@@ -126,3 +126,44 @@
         <div class="task">
             <label>7. Contextual Reasoning (Smell of rain?):</label>
             <textarea id="context"></textarea>
+        </div>
+    </div>
+
+    <button onclick="calculateScore()">Score It!</button>
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateScore() {
+            let score = 0;
+
+            let pattern = document.getElementById('pattern').value.trim();
+            if (pattern === '36') score += 20;
+
+            let knowledge = document.getElementById('knowledge').value.trim().toLowerCase();
+            if (knowledge === 'nile') score += 20;
+
+            let creative = document.getElementById('creative').value.toLowerCase();
+            if (creative.includes('feather') && creative.includes('clock') && creative.includes('river')) {
+                score += (creative.length > 50 ? 18 : 15);
+            }
+
+            let efficiency = document.getElementById('efficiency').value.trim();
+            if (efficiency === '312.5') score += 20;
+
+            let adaptability = document.getElementById('adaptability').value.toLowerCase();
+            if (adaptability.length > 20 && adaptability.includes('toaster')) score += 18;
+
+            let code = document.getElementById('code').value.toLowerCase();
+            if (code.includes('o(n)') || code.includes('sum(arr)') || code.includes('s * s')) score += 20;
+
+            let context = document.getElementById('context').value.toLowerCase();
+            if (context.includes('petrichor') || context.includes('earthy') || context.includes('ozone')) score += 18;
+
+            let finalScore = Math.round((score / 134) * 100);
+            let result = document.getElementById('result');
+            result.innerHTML = `Score: ${finalScore}/100`;
+            result.classList.add('show'); // Fade-in animation
+        }
+    </script>
+</body>
+</html>
