@@ -1,0 +1,13 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+
+# Node.js (if we use it later)
+node_modules/
+npm-debug.log
+
+# Build outputs
+dist/
+build/
