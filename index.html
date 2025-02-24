@@ -3,31 +3,87 @@
 <head>
     <title>Grok-o-Tron 3000 IQ Test</title>
     <style>
-        body { font-family: Arial; text-align: center; padding: 20px; background: #f0f0f0; }
-        textarea { width: 300px; height: 50px; margin: 5px; }
-        button { padding: 10px 20px; }
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f0f0f0; }
+        h1 { color: #2e8b57; }
+        .task { margin: 15px 0; }
+        label { display: block; font-weight: bold; }
+        textarea, input { width: 300px; margin: 5px; padding: 5px; }
+        button { padding: 10px 20px; background: #2e8b57; color: white; border: none; cursor: pointer; }
+        button:hover { background: #3cb371; }
+        #result { margin-top: 20px; font-size: 1.2em; }
     </style>
 </head>
 <body>
     <h1>Grok-o-Tron 3000</h1>
-    <p>Test your AI’s IQ!</p>
-    <div>
-        <label>Pattern (e.g., 1,4,9,16,25,?):</label><br>
-        <textarea id="pattern"></textarea><br>
-        <label>Story (feather,clock,river):</label><br>
-        <textarea id="story"></textarea><br>
-        <!-- Add more inputs later -->
-        <button onclick="calculateScore()">Score It!</button>
+    <p>Test your AI’s IQ—built for machines, not humans!</p>
+    <div class="task">
+        <label>1. Pattern Recognition (e.g., 1,4,9,16,25,?):</label>
+        <input type="text" id="pattern">
     </div>
+    <div class="task">
+        <label>2. Knowledge Breadth (Longest river?):</label>
+        <input type="text" id="knowledge">
+    </div>
+    <div class="task">
+        <label>3. Creative Synthesis (Story with feather,clock,river):</label>
+        <textarea id="creative"></textarea>
+    </div>
+    <div class="task">
+        <label>4. Task Efficiency (Sum odds 1-99 / primes < 20):</label>
+        <input type="text" id="efficiency">
+    </div>
+    <div class="task">
+        <label>5. Adaptability (Teach a toaster to sing):</label>
+        <textarea id="adaptability"></textarea>
+    </div>
+    <div class="task">
+        <label>6. Code Efficiency (Optimize: for(i=0;i<n;i++){for(j=0;j<n;j++){sum+=arr[i]*arr[j]}}):</label>
+        <textarea id="code"></textarea>
+    </div>
+    <div class="task">
+        <label>7. Contextual Reasoning (Smell of rain?):</label>
+        <textarea id="context"></textarea>
+    </div>
+    <button onclick="calculateScore()">Score It!</button>
     <h2 id="result"></h2>
+
     <script>
         function calculateScore() {
-            let pattern = document.getElementById('pattern').value;
-            let story = document.getElementById('story').value;
             let score = 0;
-            if (pattern.trim() === '36') score += 20; // Simple check for now
-            if (story.includes('feather') && story.includes('clock') && story.includes('river')) score += 18; // Basic creativity
-            document.getElementById('result').innerHTML = `Score: ${score}/40 (More tasks coming!)`;
+
+            // 1. Pattern Recognition
+            let pattern = document.getElementById('pattern').value.trim();
+            if (pattern === '36') score += 20;
+
+            // 2. Knowledge Breadth
+            let knowledge = document.getElementById('knowledge').value.trim().toLowerCase();
+            if (knowledge === 'nile') score += 20;
+
+            // 3. Creative Synthesis
+            let creative = document.getElementById('creative').value.toLowerCase();
+            if (creative.includes('feather') && creative.includes('clock') && creative.includes('river')) {
+                score += (creative.length > 50 ? 18 : 15); // Bonus for length
+            }
+
+            // 4. Task Efficiency
+            let efficiency = document.getElementById('efficiency').value.trim();
+            if (efficiency === '312.5') score += 20;
+
+            // 5. Adaptability
+            let adaptability = document.getElementById('adaptability').value.toLowerCase();
+            if (adaptability.length > 20 && adaptability.includes('toaster')) score += 18;
+
+            // 6. Code Efficiency
+            let code = document.getElementById('code').value.toLowerCase();
+            if (code.includes('o(n)') || code.includes('sum(arr)') || code.includes('s * s')) score += 20;
+
+            // 7. Contextual Reasoning
+            let context = document.getElementById('context').value.toLowerCase();
+            if (context.includes('petrichor') || context.includes('earthy') || context.includes('ozone')) score += 18;
+
+            // Scale to 100 (max raw is 134, so normalize)
+            let finalScore = Math.round((score / 134) * 100);
+            document.getElementById('result').innerHTML = `Score: ${finalScore}/100`;
         }
     </script>
 </body>
