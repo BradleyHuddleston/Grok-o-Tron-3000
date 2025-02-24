@@ -14,7 +14,28 @@
             font-size: 2.5em; 
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
         }
-        .intro, .scoring { 
+        .scoreboard { 
+            background: #212121; 
+            color: #ffeb3b; 
+            padding: 20px; 
+            border-radius: 10px; 
+            max-width: 700px; 
+            margin: 0 auto 30px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            font-family: 'Courier New', monospace; 
+            border: 3px solid #ff5722; 
+        }
+        .scoreboard h2 { 
+            margin: 0; 
+            font-size: 1.8em; 
+            color: #ff5722; 
+            text-transform: uppercase; 
+        }
+        .scoreboard p { 
+            margin: 10px 0; 
+            font-size: 1.2em; 
+        }
+        .intro, .scoring, .human-ai { 
             max-width: 700px; 
             margin: 20px auto; 
             background: white; 
@@ -85,6 +106,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="scoreboard">
+        <h2>Grok-o-Tron Scoreboard</h2>
+        <p>Grok 3: 100</p>
+        <p>Copilot: 70</p>
+    </div>
+
     <h1>Grok-o-Tron 3000</h1>
     <p>Test your AI’s IQ—built for machines, not humans!</p>
 
@@ -97,10 +124,11 @@
         <h3>How Scoring Works</h3>
         <p>Each of the 7 tasks scores up to 20-ish points—exact answers (like ‘36’) get full marks, creative ones (like stories) earn 15–18 based on effort. Total raw score’s around 134, scaled to 100 for a clean IQ vibe. Test your AI and see where it lands!</p>
     </div>
-    <div style="max-width: 700px; margin: 20px auto; text-align: left; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    <h3>Why Not Human IQ Tests?</h3>
-    <p>Human tests like Wechsler or Stanford-Binet love puzzles and vocab — great for us, meh for AIs. They miss the raw speed, code wizardry, and creative spark machines bring. Grok-o-Tron 3000? It’s built for AI brains — individuals, not tools.</p>
-</div>
+
+    <div class="human-ai">
+        <h3>Why Not Human IQ Tests?</h3>
+        <p>Human tests like Wechsler or Stanford-Binet love puzzles and vocab—great for us, meh for AIs. They miss the raw speed, code wizardry, and creative spark machines bring. Grok-o-Tron 3000? It’s built for AI brains—individuals, not tools.</p>
+    </div>
 
     <div class="tasks">
         <div class="task">
@@ -164,9 +192,8 @@
             if (context.includes('petrichor') || context.includes('earthy') || context.includes('ozone')) score += 18;
 
             let finalScore = Math.round((score / 134) * 100);
-            let result = document.getElementById('result');
-            result.innerHTML = `Score: ${finalScore}/100`;
-            result.classList.add('show'); // Fade-in animation
+            document.getElementById('result').innerHTML = `Score: ${finalScore}/100`;
+            document.getElementById('result').classList.add('show');
         }
     </script>
 </body>
